@@ -201,8 +201,8 @@ The approach is: design properly, then build in phases that each deliver somethi
 
 - [x] Set up the Git repository with this brief and a README.
 - [x] Design and create the database schema (full T-SQL scripts).
-- [ ] Set up the Python project with FastAPI.
-- [ ] Set up the React project (Vite + React).
+- [x] Set up the Python project with FastAPI.
+- [x] Set up the React project (Vite + React).
 - [x] Confirm Lloyds export format — export a real statement and document the columns.
 
 **Deliverable:** A working repo with empty but runnable frontend and backend, plus a populated database schema.
