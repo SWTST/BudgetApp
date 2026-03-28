@@ -1,4 +1,4 @@
-# Budget App — Project Brief
+# Copperline — Project Brief
 
 > **Status:** Draft v1 — Under Review
 > **Author:** [Steven Wyatt]
@@ -200,10 +200,10 @@ The approach is: design properly, then build in phases that each deliver somethi
 ### Phase 0 — Foundation (No visible app yet)
 
 - [x] Set up the Git repository with this brief and a README.
-- [ ] Design and create the database schema (full T-SQL scripts).
+- [x] Design and create the database schema (full T-SQL scripts).
 - [ ] Set up the Python project with FastAPI.
 - [ ] Set up the React project (Vite + React).
-- [ ] Confirm Lloyds export format — export a real statement and document the columns.
+- [x] Confirm Lloyds export format — export a real statement and document the columns.
 
 **Deliverable:** A working repo with empty but runnable frontend and backend, plus a populated database schema.
 
@@ -311,7 +311,7 @@ These need answers before or during development. They do not block starting Phas
 ## Appendix A: Repository Structure (Proposed)
 
 ```
-budget-tool/
+copperline/
 ├── docs/
 │   ├── PROJECT_BRIEF.md          ← This document
 │   ├── SCHEMA.md                 ← Detailed database design
