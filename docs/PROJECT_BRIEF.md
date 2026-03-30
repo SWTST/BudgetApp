@@ -209,11 +209,11 @@ The approach is: design properly, then build in phases that each deliver somethi
 
 ### Phase 1 — Import & Browse
 
-- [ ] Build the CSV/Excel import endpoint (FastAPI).
-- [ ] Build the transaction list page (React) — sortable, filterable.
-- [ ] Build the category management page — add/edit/reorder categories.
-- [ ] Build manual transaction categorisation (dropdown on each transaction row).
-- [ ] Implement merchant rules and auto-categorisation on import.
+- [x] Build the CSV/Excel import endpoint (FastAPI).
+- [x] Build the transaction list page (React) — filterable by month/year/search/uncategorised.
+- [x] Build the category management page — add/edit/reorder/deactivate categories.
+- [x] Build manual transaction categorisation (dropdown on each transaction row).
+- [x] Implement merchant rules and auto-categorisation on import.
 
 **Deliverable:** You can upload a statement, see your transactions, and categorise them.
 
@@ -265,9 +265,9 @@ These need answers before or during development. They do not block starting Phas
 
 1. **Lloyds export format:** What columns does the CSV actually contain? (Will be answered by exporting a real statement.)
 2. **Styling approach for React:** Options include plain CSS, Tailwind CSS, or a component library like Material UI or shadcn/ui. Decision can wait until Phase 1. Recommendation: Tailwind CSS — utility-first, no pre-built components to learn, works well with AI assistance.
-3. **Python ↔ SQL Server connection:** pyodbc vs. SQLAlchemy. pyodbc is simpler and more familiar to a DBA (raw SQL). SQLAlchemy adds an ORM layer. Recommendation: start with pyodbc for direct T-SQL queries (leverages existing skills), consider SQLAlchemy later if the codebase grows.
+3. **Python ↔ SQL Server connection:** ✅ Resolved — pyodbc with raw T-SQL. See ADR-004.
 4. **Authentication:** Not needed for v1 (local, single user). If the app ever goes multi-user, this becomes critical. Don't build it early, but don't make assumptions that prevent adding it later.
-5. **What are the starter categories?** A sensible default list should be defined before Phase 1. Draft below.
+5. **What are the starter categories?** ✅ Resolved — seeded in `002_seed_categories.sql`.
 
 ---
 

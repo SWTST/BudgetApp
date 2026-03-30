@@ -70,3 +70,43 @@
 **Key parser requirements:** strip leading `'` from Sort Code; combine split Debit/Credit columns into single signed `AmountPence`; parse dates as `DD/MM/YYYY` explicitly; use `LIKE 'PATTERN%'` prefix matching for merchant rules due to ~18 char description truncation.
 
 **Consequences:** Parser is specific to Lloyds. Designed to be configurable (column mapping by name, not position) so other bank formats can be added later without a rewrite.
+
+---
+
+## ADR-007 — Tailwind CSS v4 for Styling
+
+**Date:** 2026-03-30
+
+**Decision:** Use Tailwind CSS v4 with the `@tailwindcss/vite` plugin. No `tailwind.config.js` needed — a single `@import "tailwindcss"` in `index.css` is sufficient.
+
+**Consequences:** Minimal setup overhead. All styling via utility classes directly in JSX. No component library introduced — keeps the learning surface focused on React rather than a third-party UI kit.
+
+---
+
+## ADR-008 — React Router v6 for Client-Side Navigation
+
+**Date:** 2026-03-30
+
+**Decision:** Use React Router v6 (`react-router-dom`) with a nested route layout pattern: a single `<Layout>` component wraps all pages via `<Outlet />`, with three routes — `/` (Transactions), `/import`, `/categories`.
+
+**Consequences:** Clean URL-based navigation. Adding new pages in Phase 2 (Dashboard, Budget) requires only adding a new `<Route>` and a nav link.
+
+---
+
+## ADR-009 — db.py as a Context Manager
+
+**Date:** 2026-03-30
+
+**Decision:** `get_connection()` in `backend/app/db.py` is decorated with `@contextmanager`. It commits on success, rolls back on any exception, and always closes the connection in the `finally` block.
+
+**Consequences:** All routers use `with get_connection() as conn:` and never need to manually commit, rollback, or close. Exceptions (including `HTTPException`) propagate correctly after cleanup.
+
+---
+
+## ADR-010 — SQL Reserved Word: `RowCount`
+
+**Date:** 2026-03-30
+
+**Decision:** The `RowCount` column on `Ledger.ImportBatches` must be referenced in T-SQL as `[RowCount]` (square-bracket quoting) because `ROWCOUNT` is a reserved keyword in SQL Server.
+
+**Consequences:** All queries touching this column use bracket quoting. A future migration could rename it to `TransactionCount` or similar to avoid the issue entirely.

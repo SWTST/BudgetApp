@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.db import get_connection
+from app.routers import accounts, categories, transactions, imports
 
 app = FastAPI(
     title="Copperline API",
@@ -16,6 +17,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(accounts.router)
+app.include_router(categories.router)
+app.include_router(transactions.router)
+app.include_router(imports.router)
 
 
 @app.get("/health")
